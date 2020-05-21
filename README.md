@@ -1,29 +1,13 @@
-# README #
+# Celestial #
+Celestial is a Physics simulation of N-Body gravitational motion. 
 
-This README would normally document whatever steps are necessary to get your application up and running.
+### Summary ####
 
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
+* N Body Problem.py is the simulation code, simply run this in the console after defining BCs and it will produce a graph and mp4
+* animation.py is a selection of animations and plots for a binary file that is defined in the running
+* BCs.py is a list of boundary conditions which can be copy and pasted into N Body Problem.py to run a given simulation
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+* Jake Wilkins
+* University of Surrey Physics Department, GU2 7NG
