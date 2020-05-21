@@ -10,4 +10,4 @@ Celestial is a Physics simulation of N-Body gravitational motion.
 ### Who do I talk to? ###
 
 * Jake Wilkins
-* University of Surrey Physics Department, GU2 7NG
+* University of Surrey Physics Department
