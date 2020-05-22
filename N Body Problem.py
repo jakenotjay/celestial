@@ -117,7 +117,7 @@ for t in range(0, n_pts):
 
         # finding the total velocity and finding total energy of the body
         mod_vel = findModulus(v_N[i, t, 0], v_N[i, t, 1])
-        E_N[i, t] = (1/2 * U_N) + (1/2 * m_N[i] * (mod_vel**2))
+        E_N[i, t] = U_N + (1/2 * m_N[i] * (mod_vel**2))
 
 # Gets time after simulation, subtracts the two times - this is total computation time
 endTime = datetime.now()
