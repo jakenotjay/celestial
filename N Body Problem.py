@@ -4,11 +4,11 @@ from matplotlib import animation as animation
 from datetime import datetime
 
 # Defining output file names
-outfileName = "Fo84"
+outfileName = "Fo85"
 
 # Defining time for simulation in seconds and number of simulated points
 total_t = 20 * 6.3259
-n_pts = 1000000
+n_pts = 10000
 h = total_t/n_pts
 T = np.linspace(0, total_t, n_pts)
 print("Timestep, h(s):")
@@ -27,33 +27,35 @@ v_N = np.zeros([N, n_pts, 2], dtype=float)
 E_N = np.zeros([N, n_pts], dtype=float)
 labels = np.array(N)
 
+# Example boundary conditions of Binary-Binary Scattering
+# Paste boundary conditions here to run the program
 # Defining the boundary conditions of the system (labels, mass, position and velocity)
 labels = ['Body 1', 'Body 2', 'Body 3', 'Body 4']
 m_N = [1, 1, 1, 1]
 
-r_N[0, 0, 0] = -0.97000436
-r_N[0, 0, 1] = 0.24308753
+r_N[0, 0, 0] = -17.805408786464607
+r_N[0, 0, 1] = 9.924460380009748
 
-r_N[1, 0, 0] = 0
-r_N[1, 0, 1] = 0
+r_N[1, 0, 0] = -17.522462672093727
+r_N[1, 0, 1] = 9.844361048322083
 
-r_N[2, 0, 0] = 0.97000436
-r_N[2, 0, 1] = -0.24308753
+r_N[2, 0, 0] = 21.855045291514042
+r_N[2, 0, 1] = 96.71614326837404
 
-r_N[3, 0, 0] = 2
-r_N[3, 0, 1] = -10
+r_N[3, 0, 0] = 15.472826167039328
+r_N[3, 0, 1] = 0.03290878530226571
 
-v_N[0, 0, 0] = 0.4662036850
-v_N[0, 0, 1] = 0.4323657300
+v_N[0, 0, 0] = -0.626566059682582
+v_N[0, 0, 1] = 1.2065091336888347
 
-v_N[1, 0, 0] = -0.93240737
-v_N[1, 0, 1] = -0.86473146
+v_N[1, 0, 0] = 0.8077638840890938
+v_N[1, 0, 1] = -1.2460422938210478
 
-v_N[2, 0, 0] = 0.4662036850
-v_N[2, 0, 1] = 0.4323657300
+v_N[2, 0, 0] = -0.20269457670123955
+v_N[2, 0, 1] = -0.8397934480703219
 
-v_N[3, 0, 0] = 0
-v_N[3, 0, 1] = 1
+v_N[3, 0, 0] = -0.02149675229478111
+v_N[3, 0, 1] = 0.12067339179747077
 
 # Defining some helpful functions to avoid repetitions
 def findModulus(x, y):
@@ -68,7 +70,7 @@ def findDvDt(r, M):
 # takes start time of simulation
 startTime = datetime.now()
 
-# Loopin through all number of points
+# Looping through all number of points
 for t in range(0, n_pts):
     # for each mass at time t
     for i in range(0, N):
@@ -110,7 +112,7 @@ for t in range(0, n_pts):
             if(j != i):
                 U_N += -(G*m_N[i]*m_N[j])/(mod_rel[j])
         
-        # set poisiton for the next time step
+        # set position for the next time step
         if(t != (n_pts -1)):
             r_N[i, t+1, 0] = r_N[i, t, 0] + (h * v_N[i, t+1, 0])
             r_N[i, t+1, 1] = r_N[i, t, 1] + (h * v_N[i, t+1, 1])
@@ -147,6 +149,7 @@ frames = 720
 n = n_pts/frames
 
 # Defines writer for mp4 file 
+# ensure you have ffmpeg installed on a Linux system
 Writer = animation.writers['ffmpeg']
 writer = Writer(fps=24, metadata=dict(artist='J', bitrate=1800))
 
